@@ -187,8 +187,13 @@ function switchPage(pageId) {
     });
 
     localStorage.setItem('activePortfolioPage', pageId);
+    
+    // Automatically close the mobile menu drawer on selection
     const navLinks = document.getElementById('nav-links');
-    if (navLinks) navLinks.classList.remove('open');
+    if (navLinks) {
+        navLinks.classList.remove('open');
+    }
+
     window.scrollTo(0, 0);
 }
 
