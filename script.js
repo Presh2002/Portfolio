@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeMenuBtn = document.getElementById('close-menu');
     const navLinks = document.getElementById('nav-links');
 
+    // Force the mobile drawer closed on initial load
+    if (navLinks) {
+        navLinks.classList.remove('open');
+    }
+
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
