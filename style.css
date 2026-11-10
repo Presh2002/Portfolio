@@ -87,7 +87,10 @@ h1 { margin-bottom: 0.5rem; color: #0f172a; }
 
 .navbar:hover {
     border: 1px solid rgba(255, 255, 255, 0.95);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 1);
+    box-shadow: none;
+    animation: none;
+    transition: none;
+    transform: none;
 }
 
 .logo {
