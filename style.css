@@ -1,29 +1,17 @@
 /* ==========================================
    1. ANIMATIONS & KEYFRAMES
    ========================================== */
-/* Scroll fade-in animation base classes */
+/* Scroll fade-in animation base classes with smooth enter and exit */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
 .fade-in-up.appear {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Spinner and pulsing animations */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
 }
 
 
@@ -484,7 +472,6 @@ h1 { margin-bottom: 0.5rem; color: #2c3e50; }
         width: 60%;
     }
 }
-
 
 /* ==========================================
    8. ACADEMIC PLANNER WIDGET (Updated)
