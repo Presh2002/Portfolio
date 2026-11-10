@@ -487,7 +487,7 @@ h1 { margin-bottom: 0.5rem; color: #2c3e50; }
 
 
 /* ==========================================
-   8. ACADEMIC PLANNER WIDGET
+   8. ACADEMIC PLANNER WIDGET (Updated)
    ========================================== */
 .planner-container {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 250, 0.9));
@@ -637,7 +637,7 @@ h1 { margin-bottom: 0.5rem; color: #2c3e50; }
 .delete-btn { background-color: #fee2e2; color: #dc2626; }
 .delete-btn:hover { background-color: #fca5a5; }
 
-/* Planner Responsive Adjustments */
+/* Planner Responsive Adjustments & Mobile Date Label Fix */
 @media (max-width: 768px) {
     .task-input-group {
         flex-direction: column;
@@ -651,8 +651,22 @@ h1 { margin-bottom: 0.5rem; color: #2c3e50; }
     .planner-container {
         padding: 1.5rem;
     }
-}
 
+    /* Adds a clean placeholder label via CSS for mobile view so the datetime picker's purpose is clear */
+    .task-input-group input[type="datetime-local"]::before {
+        content: "Deadline: ";
+        color: #64748b;
+        font-size: 0.85rem;
+        margin-right: 4px;
+    }
+
+    /* Reduces text size on mobile inputs to prevent overflow and ensure full visibility */
+    .task-input-group input[type="text"],
+    .task-input-group input[type="datetime-local"] {
+        font-size: 0.85rem;
+        padding: 0.75rem 0.9rem;
+    }
+}
 
 /* ==========================================
    9. CONTACT FORM STYLES
