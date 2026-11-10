@@ -1,8 +1,12 @@
 /* ==========================================
-JAVASCRIPT BEHAVIORS & LOGIC
-========================================== */
+   JAVASCRIPT BEHAVIORS & LOGIC
+   ========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* ==========================================
+       1. MOBILE NAVIGATION & DRAWER TOGGLE
+       ========================================== */
     const mobileMenuBtn = document.getElementById('mobile-menu');
     const closeMenuBtn = document.getElementById('close-menu');
     const navLinks = document.getElementById('nav-links');
@@ -34,15 +38,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Restore active page from localStorage on load
+
+    /* ==========================================
+       2. SCROLL FADE-IN ANIMATION (INTERSECTION OBSERVER)
+       ========================================== */
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                console.log('Animating element:', entry.target); // Debugging log
+            }
+        });
+    }, observerOptions);
+
+    function initScrollAnimations() {
+        const fadeElements = document.querySelectorAll('.fade-in-up');
+        fadeElements.forEach(el => observer.observe(el));
+    }
+
+    initScrollAnimations();
+
+
+    /* ==========================================
+       3. PAGE INITIALIZATION & STATE RESTORATION
+       ========================================== */
     const savedPage = localStorage.getItem('activePortfolioPage');
     if (savedPage) {
         switchPage(savedPage);
+    } else {
+        // Fallback check animations for the default page if no local storage found
+        setTimeout(initScrollAnimations, 100);
     }
 
+    // Initial render call for tasks widget
     renderTasks();
-    setInterval(renderTasks, 60000);
+    setInterval(renderTasks, 60000); // Update badge statuses every minute
 
+
+    /* ==========================================
+       4. TASK WIDGET & MANAGEMENT
+       ========================================== */
     const taskInput = document.getElementById("taskInput");
     const taskDateTime = document.getElementById("taskDateTime");
     const addTaskBtn = document.getElementById("addTaskBtn");
@@ -79,6 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
+    /* ==========================================
+       5. PHONE NUMBER FORMATTING INPUT
+       ========================================== */
     const phoneInput = document.getElementById("phone");
     if (phoneInput) {
         phoneInput.addEventListener("input", (e) => {
@@ -100,6 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
+    /* ==========================================
+       6. CONTACT FORM VALIDATION & SUBMISSION
+       ========================================== */
     const contactForm = document.getElementById("contactForm");
     const submitBtn = document.getElementById("submitBtn");
 
@@ -174,7 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Global Helper Functions
+
+/* ==========================================
+   7. GLOBAL HELPER FUNCTIONS
+   ========================================== */
+
+// Switch Portfolio Pages / Sections Smoothly
 function switchPage(pageId) {
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(sec => sec.classList.remove('active-page'));
@@ -200,8 +254,24 @@ function switchPage(pageId) {
     }
 
     window.scrollTo(0, 0);
+
+    // Re-check scroll animations for elements inside the newly visible section
+    setTimeout(() => {
+        if (targetSection) {
+            const fadeElements = targetSection.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('appear');
+                }
+            });
+        }
+    }, 50);
 }
 
+
+/* ==========================================
+   8. TASK MANAGEMENT UTILITIES
+   ========================================== */
 let tasks = JSON.parse(localStorage.getItem('academicTasks')) || [];
 
 function renderTasks() {
@@ -261,9 +331,15 @@ function deleteTask(id) {
     saveAndRenderTasks();
 }
 
+
+/* ==========================================
+   9. POPUP NOTIFICATION ALERTS
+   ========================================== */
 function showPopupAlert(message) {
     const popup = document.getElementById("popupAlert");
     const popupText = document.getElementById("popupAlertText");
+    if (!popup || !popupText) return;
+    
     popupText.textContent = message;
     popup.classList.add("show");
 
