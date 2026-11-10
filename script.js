@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* ==========================================
-       2. SCROLL FADE-IN ANIMATION (INTERSECTION OBSERVER)
+ /* ==========================================
+       2. SCROLL FADE-IN ANIMATION (REPEATING)
        ========================================== */
     const observerOptions = {
         root: null,
@@ -51,8 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Add class when element enters viewport
                 entry.target.classList.add('appear');
-                console.log('Animating element:', entry.target); // Debugging log
+            } else {
+                // Remove class when element leaves viewport so it can fade in again when scrolled back
+                entry.target.classList.remove('appear');
             }
         });
     }, observerOptions);
@@ -63,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initScrollAnimations();
-
 
     /* ==========================================
        3. PAGE INITIALIZATION & STATE RESTORATION
