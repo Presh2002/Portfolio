@@ -101,13 +101,14 @@ body {
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     .menu-close-btn { display: block; }
+    
     .nav-links {
-        position: fixed;
+        position: absolute;
         top: 0;
-        right: -280px;
+        right: -100%; /* Hides it completely off-screen to the right */
         width: 280px;
         height: 100vh;
-        background: rgba(30, 41, 59, 0.95);
+        background: rgba(30, 41, 59, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -115,12 +116,28 @@ body {
         padding-top: 2rem;
         gap: 1.2rem;
         box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-        transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 1100;
     }
-    .nav-links.open { right: 0; }
-    .nav-links a { padding: 0.5rem 2rem; font-size: 1.1rem; display: block; }
-    .nav-links a::after { left: 2rem; width: 0; }
-    .nav-links a:hover::after, .nav-links a.active::after { width: calc(100% - 4rem); }
+    
+    .nav-links.open {
+        right: 0; 
+    }
+    
+    .nav-links a { 
+        padding: 0.5rem 2rem; 
+        font-size: 1.1rem; 
+        display: block; 
+    }
+    
+    .nav-links a::after { 
+        left: 2rem; 
+        width: 0; 
+    }
+    
+    .nav-links a:hover::after, .nav-links a.active::after { 
+        width: calc(100% - 4rem); 
+    }
 }
 
 .container {
@@ -638,45 +655,3 @@ ACADEMIC PLANNER (Spacious & Clean Layout)
 
 .delete-btn { background-color: #fee2e2; color: #dc2626; }
 .delete-btn:hover { background-color: #fca5a5; }
-
-@media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .menu-close-btn { display: block; }
-    
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Hides it completely off-screen to the right */
-        width: 280px;
-        height: 100vh;
-        background: rgba(30, 41, 59, 0.98);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-        flex-direction: column;
-        padding-top: 2rem;
-        gap: 1.2rem;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-        transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 1100;
-    }
-    
-    .nav-links.open {
-        right: 0; /* Slides it cleanly into view when active */
-    }
-    
-    .nav-links a { 
-        padding: 0.5rem 2rem; 
-        font-size: 1.1rem; 
-        display: block; 
-    }
-    
-    .nav-links a::after { 
-        left: 2rem; 
-        width: 0; 
-    }
-    
-    .nav-links a:hover::after, .nav-links a.active::after { 
-        width: calc(100% - 4rem); 
-    }
-}
