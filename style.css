@@ -814,27 +814,28 @@ h1 { margin-bottom: 0.5rem; color: #0f172a; }
     .task-table td {
         background: transparent !important;
         border: none !important;
-        padding: 0.5rem 0;
+        padding: 0.4rem 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        text-align: right;
+        font-size: 0.85rem; /* Reduced font size for mobile divs */
     }
 
     .task-text-cell, .task-meta-cell {
         flex: 1;
-        margin-left: 1rem;
+        margin-left: 0.75rem;
         text-align: right;
         word-break: break-word;
+        font-size: 0.85rem; /* Scaled down text size to fit cleanly */
     }
 
-    .task-table td:nth-child(1)::before { content: "Status:"; font-weight: 600; color: #475569; text-align: left; }
-    .task-table td:nth-child(2)::before { content: "Task:"; font-weight: 600; color: #475569; text-align: left; }
-    .task-table td:nth-child(3)::before { content: "Deadline:"; font-weight: 600; color: #475569; text-align: left; }
-    .task-table td:nth-child(4)::before { content: "Action:"; font-weight: 600; color: #475569; text-align: left; }
+    .task-table td:nth-child(1)::before { content: "Status:"; font-weight: 600; color: #475569; font-size: 0.85rem; }
+    .task-table td:nth-child(2)::before { content: "Task:"; font-weight: 600; color: #475569; font-size: 0.85rem; }
+    .task-table td:nth-child(3)::before { content: "Deadline:"; font-weight: 600; color: #475569; font-size: 0.85rem; }
+    .task-table td:nth-child(4)::before { content: "Action:"; font-weight: 600; color: #475569; font-size: 0.85rem; }
 
     .planner-container {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 }
 
