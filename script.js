@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeMenuBtn = document.getElementById('close-menu');
     const navLinks = document.getElementById('nav-links');
 
-    // Force the mobile drawer closed on initial load
     if (navLinks) {
         navLinks.classList.remove('open');
     }
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Close mobile dropdown/menu when clicking anywhere outside of it
     document.addEventListener('click', (e) => {
         if (navLinks && navLinks.classList.contains('open')) {
             if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
- /* ==========================================
+    /* ==========================================
        2. SCROLL FADE-IN ANIMATION (REPEATING)
        ========================================== */
     const observerOptions = {
@@ -51,10 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add class when element enters viewport
                 entry.target.classList.add('appear');
             } else {
-                // Remove class when element leaves viewport so it can fade in again when scrolled back
                 entry.target.classList.remove('appear');
             }
         });
@@ -74,17 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedPage) {
         switchPage(savedPage);
     } else {
-        // Fallback check animations for the default page if no local storage found
         setTimeout(initScrollAnimations, 100);
     }
 
-    // Initial render call for tasks widget
     renderTasks();
-    setInterval(renderTasks, 60000); // Update badge statuses every minute
+    setInterval(renderTasks, 60000);
 
 
     /* ==========================================
-       4. TASK WIDGET & MANAGEMENT
+       4. TASK WIDGET & MANAGEMENT (TABLE FORMAT)
        ========================================== */
     const taskInput = document.getElementById("taskInput");
     const taskDateTime = document.getElementById("taskDateTime");
@@ -160,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
-            const phone = phoneInput.value.trim();
+            const phone = phoneInput ? phoneInput.value.trim() : "";
             const message = document.getElementById("message").value.trim();
 
             const nameError = document.getElementById("nameError");
@@ -168,57 +162,61 @@ document.addEventListener("DOMContentLoaded", () => {
             const phoneError = document.getElementById("phoneError");
             const messageError = document.getElementById("messageError");
 
-            nameError.textContent = "";
-            emailError.textContent = "";
-            phoneError.textContent = "";
-            messageError.textContent = "";
+            if (nameError) nameError.textContent = "";
+            if (emailError) emailError.textContent = "";
+            if (phoneError) phoneError.textContent = "";
+            if (messageError) messageError.textContent = "";
 
             let isValid = true;
 
             if (name === "") {
-                nameError.textContent = "Name field cannot be empty.";
+                if (nameError) nameError.textContent = "Name field cannot be empty.";
                 isValid = false;
             }
 
             if (email === "") {
-                emailError.textContent = "Email field cannot be empty.";
+                if (emailError) emailError.textContent = "Email field cannot be empty.";
                 isValid = false;
             } else {
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(email)) {
-                    emailError.textContent = "Please enter a valid email address format.";
+                    if (emailError) emailError.textContent = "Please enter a valid email address format.";
                     isValid = false;
                 }
             }
 
             if (phone === "") {
-                phoneError.textContent = "Phone number field cannot be empty.";
+                if (phoneError) phoneError.textContent = "Phone number field cannot be empty.";
                 isValid = false;
             } else {
                 const rawDigits = phone.replace(/\D/g, '');
                 if (!phone.startsWith('+')) {
-                    phoneError.textContent = "Phone number must start with a country code (e.g. +234...).";
+                    if (phoneError) phoneError.textContent = "Phone number must start with a country code (e.g. +234...).";
                     isValid = false;
                 } else if (rawDigits.length < 11) {
-                    phoneError.textContent = "Please enter a complete phone number including country code.";
+                    if (phoneError) phoneError.textContent = "Please enter a complete phone number including country code.";
                     isValid = false;
                 }
             }
 
             if (message === "") {
-                messageError.textContent = "Message field cannot be empty.";
+                if (messageError) messageError.textContent = "Message field cannot be empty.";
                 isValid = false;
             }
 
             if (isValid) {
-                submitBtn.innerHTML = `<span class="spinner"></span> Sending message...`;
-                submitBtn.disabled = true;
+                if (submitBtn) {
+                    submitBtn.innerHTML = `<span class="spinner"></span> Sending message...`;
+                    submitBtn.disabled = true;
+                }
 
                 setTimeout(() => {
                     showPopupAlert(`Success! Thank you, ${name}. Your message has been sent.`);
                     contactForm.reset();
-                    submitBtn.innerHTML = "Send Message";
-                    submitBtn.disabled = false;
+                    if (submitBtn) {
+                        submitBtn.innerHTML = "Send Message";
+                        submitBtn.disabled = false;
+                    }
                 }, 1000);
             }
         });
@@ -230,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
    7. GLOBAL HELPER FUNCTIONS
    ========================================== */
 
-// Switch Portfolio Pages / Sections Smoothly
 function switchPage(pageId) {
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(sec => sec.classList.remove('active-page'));
@@ -249,7 +246,6 @@ function switchPage(pageId) {
 
     localStorage.setItem('activePortfolioPage', pageId);
     
-    // Automatically close the mobile menu drawer on selection
     const navLinks = document.getElementById('nav-links');
     if (navLinks) {
         navLinks.classList.remove('open');
@@ -257,7 +253,6 @@ function switchPage(pageId) {
 
     window.scrollTo(0, 0);
 
-    // Re-check scroll animations for elements inside the newly visible section
     setTimeout(() => {
         if (targetSection) {
             const fadeElements = targetSection.querySelectorAll('.fade-in-up');
@@ -272,7 +267,7 @@ function switchPage(pageId) {
 
 
 /* ==========================================
-   8. TASK MANAGEMENT UTILITIES
+   8. TASK MANAGEMENT UTILITIES (TABLE RENDERING & DONE BADGE)
    ========================================== */
 let tasks = JSON.parse(localStorage.getItem('academicTasks')) || [];
 
@@ -282,18 +277,20 @@ function renderTasks() {
 
     taskList.innerHTML = "";
     if (tasks.length === 0) {
-        taskList.innerHTML = "<p style='color: #7f8c8d; text-align: center; padding: 1rem;'>No tasks added yet.</p>";
+        taskList.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 1.5rem; background: transparent;">No academic tasks added yet.</td></tr>`;
         return;
     }
 
     const now = new Date();
 
     tasks.forEach(task => {
-        const li = document.createElement("li");
-        li.className = `task-item ${task.completed ? "completed" : ""}`;
+        const tr = document.createElement("tr");
+        tr.className = `task-row ${task.completed ? "completed" : ""}`;
         
         let badgeHTML = "";
-        if (task.rawDateTime && !task.completed) {
+        if (task.completed) {
+            badgeHTML = `<span class="done-badge">✅ DONE</span>`;
+        } else if (task.rawDateTime) {
             const dueDate = new Date(task.rawDateTime);
             if (now > dueDate) {
                 badgeHTML = `<span class="overdue-badge">⚠️ OVERDUE</span>`;
@@ -302,19 +299,17 @@ function renderTasks() {
             }
         }
 
-        li.innerHTML = `
-            <div class="task-info-content">
-                <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleTask(${task.id})">
-                <div>
-                    <span class="task-text">${task.text}</span>
-                    <div class="task-meta">📅 ${task.dateTime} ${badgeHTML}</div>
-                </div>
-            </div>
-            <div class="task-actions">
+        tr.innerHTML = `
+            <td style="text-align: center;">
+                <input type="checkbox" ${task.completed ? "checked" : ""} onclick="toggleTask(${task.id})" style="width: 1.2rem; height: 1.2rem; cursor: pointer; accent-color: #334155;">
+            </td>
+            <td class="task-text-cell">${task.text}</td>
+            <td class="task-meta-cell">📅 ${task.dateTime} ${badgeHTML}</td>
+            <td style="text-align: center;">
                 <button class="delete-btn" onclick="deleteTask(${task.id})">Delete</button>
-            </div>
+            </td>
         `;
-        taskList.appendChild(li);
+        taskList.appendChild(tr);
     });
 }
 
