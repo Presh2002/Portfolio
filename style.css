@@ -814,16 +814,24 @@ h1 { margin-bottom: 0.5rem; color: #0f172a; }
     .task-table td {
         background: transparent !important;
         border: none !important;
-        padding: 0.4rem 0;
+        padding: 0.5rem 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        text-align: right;
     }
 
-    .task-table td:nth-child(1)::before { content: "Status:"; font-weight: 600; color: #475569; }
-    .task-table td:nth-child(2)::before { content: "Task:"; font-weight: 600; color: #475569; }
-    .task-table td:nth-child(3)::before { content: "Deadline:"; font-weight: 600; color: #475569; }
-    .task-table td:nth-child(4)::before { content: "Action:"; font-weight: 600; color: #475569; }
+    .task-text-cell, .task-meta-cell {
+        flex: 1;
+        margin-left: 1rem;
+        text-align: right;
+        word-break: break-word;
+    }
+
+    .task-table td:nth-child(1)::before { content: "Status:"; font-weight: 600; color: #475569; text-align: left; }
+    .task-table td:nth-child(2)::before { content: "Task:"; font-weight: 600; color: #475569; text-align: left; }
+    .task-table td:nth-child(3)::before { content: "Deadline:"; font-weight: 600; color: #475569; text-align: left; }
+    .task-table td:nth-child(4)::before { content: "Action:"; font-weight: 600; color: #475569; text-align: left; }
 
     .planner-container {
         padding: 1.5rem;
