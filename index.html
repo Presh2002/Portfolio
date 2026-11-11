@@ -246,8 +246,11 @@
             <div class="planner-container fade-in-up">
                 <div class="task-input-group">
                     <input type="text" id="taskInput" placeholder="Enter a new task or assignment...">
-                    <input type="datetime-local" id="taskDateTime" placeholder="Deadline">
-                    <button id="addTaskBtn" class="btn">Add Task</button>
+                    <div style="flex: 1; min-width: 180px; display: flex; flex-direction: column;">
+                        <label for="taskDateTime" style="font-size: 0.8rem; font-weight: 600; color: #475569; margin-bottom: 3px;">Deadline / Schedule:</label>
+                        <input type="datetime-local" id="taskDateTime" style="width: 100%; padding: 0.9rem 1.1rem; border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 8px; font-size: 0.95rem; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(8px);">
+                    </div>
+                    <button id="addTaskBtn" class="btn" style="align-self: flex-end;">Add Task</button>
                 </div>
                 
                 <div class="table-responsive">
