@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precious Portfolio & Academic Management</title>
+    <title>Precious's Portfolio & Academic Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
        ========================================== -->
     <header>
         <nav class="navbar">
-            <div class="logo">Precious Portfolio</div>
+            <div class="logo">Precious's Portfolio</div>
             <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">&#9776;</button>
             <ul class="nav-links" id="nav-links">
                 <button class="menu-close-btn" id="close-menu" aria-label="Close navigation">&times;</button>
@@ -46,7 +46,7 @@
             <div class="hero">
                 <div class="hero-text fade-in-up">
                     <h1>Welcome to My Portfolio</h1>
-                    <p class="subtitle">Hi there! Feel free to check about me.</p>
+                    <p class="subtitle">A Computer Science Student at MIVA Open University</p>
                     <button class="btn" onclick="switchPage('projects')">View My Work</button>
                 </div>
                 <div class="hero-image fade-in-up">
@@ -56,11 +56,32 @@
             
             <div class="bio-section fade-in-up">
                 <h2>Biography</h2>
-                <p class="justify-text">My name is Precious and I am a student of MIVA Open University currently studying Computer Science as a course. Here you can explore my background, view my previous project. I also have my day-to-day task through an interactive planner, and you can also get in touch with me using the contact.</p>
+                <p class="justify-text">My name is Precious and I am a student of MIVA Open University who is currently studying Computer Science as a course. Here you can explore my background, view my previous project. I also have my day-to-day task through an interactive planner, and you can also get in touch with me using the contact.</p>
+            </div>
+
+            <!-- Embedded Video Box -->
+            <div class="bio-section fade-in-up" style="text-align: center;">
+                <h2 style="margin-bottom: 1rem; text-align: left;">A Short Coding Video of me creating a script.js for a website</h2>
+                <video width="100%" max-width="500" height="280" controls autoplay muted loop playsinline style="border-radius: 12px; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <source src="Sort Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- New Core Competencies Section -->
+            <div class="bio-section fade-in-up">
+                <h2>Core Competencies</h2>
+                <p class="justify-text" style="margin-bottom: 1rem;">Here are some key technical areas and skills I am actively building and applying in my coursework and projects:</p>
+                <ul style="list-style-position: inside; color: #334155; line-height: 1.8;">
+                    <li><strong>Frontend Web Development:</strong> Building clean, responsive layouts using HTML5, CSS3, and JavaScript.</li>
+                    <li><strong>UI/UX Principles:</strong> Designing modern, user-friendly digital experiences with glassmorphism and clean aesthetics.</li>
+                    <li><strong>Version Control:</strong> Managing source code efficiently with Git and GitHub.</li>
+                    <li><strong>Problem Solving:</strong> Applying core computer science logic and algorithms to build functional web tools.</li>
+                </ul>
             </div>
 
             <div class="featured-projects fade-in-up">
-                <h2>Featured Project</h2>
+                <h2>Recent Project</h2>
                 <div class="project-card">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoMvFbe6_znu4CBmRRRjBd93KXT2QBlsV3U6gsIbHiYA&s=10" alt="Featured Project">
                     <div class="project-info">
@@ -118,38 +139,99 @@
 
         <!-- 3. PROJECTS PAGE SECTION -->
         <section id="projects" class="page-section">
-            <div class="fade-in-up">
-                <h1>My Projects</h1>
-                <p class="section-desc">Explore the real-world web applications I have designed and built.</p>
-            </div>
+            <div class="projects-page">
+                <div class="fade-in-up">
+                    <h1>My Projects</h1>
+                    <p class="section-desc">Explore the real-world web applications I have designed and built.</p>
+                </div>
 
-            <div class="projects-container">
-                <div class="project-row-card fade-in-up">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Lbz3_htIQWXsSV1Kse79UTopcNUfksh6lG_5EM16sQ&s=10" alt="E-Commerce Store" class="project-row-img">
-                    <div class="project-row-info">
-                        <h3>🛒 ShopEase E-Commerce Store</h3>
-                        <p>A fully responsive product storefront engineered with HTML5, CSS Grid, and vanilla JavaScript filtering logic. Built to deliver a seamless shopping experience with fluid layout scaling and fast-loading catalog views across all mobile and desktop viewports.</p>
-                        <a href="#" class="btn-small" target="_blank">View Project</a>
+                <div class="projects-container">
+                    <div class="project-row-card fade-in-up">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Lbz3_htIQWXsSV1Kse79UTopcNUfksh6lG_5EM16sQ&s=10" alt="E-Commerce Store" class="project-row-img">
+                        <div class="project-row-info">
+                            <h3>🛒 ShopEase E-Commerce Store</h3>
+                            <p>A fully responsive product storefront engineered with HTML5, CSS Grid, and vanilla JavaScript filtering logic. Built to deliver a seamless shopping experience with fluid layout scaling and fast-loading catalog views across all mobile and desktop viewports.</p>
+                            <a href="#" class="btn-small" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-row-card fade-in-up">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRh-6Vih2_QiKejfXziBqXEOsoqhEYiuIbsT8g5nlR_g&s=10" alt="Calculators and Unit Converters" class="project-row-img">
+                        <div class="project-row-info">
+                            <h3>📐 OmniCalc Utility Suite</h3>
+                            <p>A multi-functional web utility application featuring a dynamic Body Mass Index (BMI) calculator and real-time currency conversion tools. Designed with clean input validation and mathematical algorithms to deliver instant, accurate computations.</p>
+                            <a href="#" class="btn-small" target="_blank">View Project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-row-card fade-in-up">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoMvFbe6_znu4CBmRRRjBd93KXT2QBlsV3U6gsIbHiYA&s=10" alt="To-do List" class="project-row-img">
+                        <div class="project-row-info">
+                            <h3>📋 EduTrack Academic Task Manager</h3>
+                            <p>A productivity-focused web task manager built to help students organize daily assignments and track hard deadlines. Features real-time countdown warning badges, item completion toggles, and persistent local storage synchronization.</p>
+                            <a onclick="switchPage('planner')" class="btn-small" style="cursor: pointer;">View Live App</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="project-row-card fade-in-up">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRh-6Vih2_QiKejfXziBqXEOsoqhEYiuIbsT8g5nlR_g&s=10" alt="Calculators and Unit Converters" class="project-row-img">
-                    <div class="project-row-info">
-                        <h3>📐 OmniCalc Utility Suite</h3>
-                        <p>A multi-functional web utility application featuring a dynamic Body Mass Index (BMI) calculator and real-time currency conversion tools. Designed with clean input validation and mathematical algorithms to deliver instant, accurate computations.</p>
-                        <a href="#" class="btn-small" target="_blank">View Project</a>
-                    </div>
-                </div>
+                <!-- Client's Testimonials -->
+                <section class="testimonials-section fade-in-up" style="margin-top: 60px;">
+                    <h2 class="section-title">Client’s Testimonials</h2>
+                    <div class="testimonials-grid">
+                        
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "Precious delivered a beautiful, user-friendly landing page that truly captures our brand’s essence. We’ve seen a clear boost in engagement and sales"
+                            </p>
+                            <div class="testimonial-author">
+                                Sara Ahmed <br>
+                                <span class="testimonial-author-title">(Founder, Sara)</span>
+                            </div>
+                        </div>
 
-                <div class="project-row-card fade-in-up">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoMvFbe6_znu4CBmRRRjBd93KXT2QBlsV3U6gsIbHiYA&s=10" alt="To-do List" class="project-row-img">
-                    <div class="project-row-info">
-                        <h3>📋 EduTrack Academic Task Manager</h3>
-                        <p>A productivity-focused web task manager built to help students organize daily assignments and track hard deadlines. Features real-time countdown warning badges, item completion toggles, and persistent local storage synchronization.</p>
-                        <a onclick="switchPage('planner')" class="btn-small" style="cursor: pointer;">View Live App</a>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">
+                                "Precious’s design exceeded our expectations! The landing page is sleek, functional, and has significantly improved our customer experience."
+                            </p>
+                            <div class="testimonial-author">
+                                Elizabeth Taylor <br>
+                                <span class="testimonial-author-title">(Arquedi’s CEO)</span>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </section>
+
+                <!-- Frequently Asked Questions -->
+                <section class="faq-section fade-in-up">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+
+                    <details class="faq-item">
+                        <summary>What technologies do i specialize on?</summary>
+                        <div class="faq-content">
+                            I specialize in frontend web development and modern web technologies: specifically HTML5 & Semantic Markup, CSS3, JavaScript, Ui/UX Principles etc.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Am i available for freelance or internship opportunities?</summary>
+                        <div class="faq-content">
+                            Yes. I am available for all opportunities.
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>How can potential employers get in touch with me?</summary>
+                        <div class="faq-content">
+                            You can get in touch with me through the contact information in the contact page.
+                        </div>
+                    </details>
+                </section>
+
+                <!-- Let’s Work Together -->
+                <section class="cta-section fade-in-up">
+                    <div class="cta-text">Let’s work together!</div>
+                </section>
             </div>
         </section>
 
@@ -167,7 +249,22 @@
                     <input type="datetime-local" id="taskDateTime">
                     <button id="addTaskBtn" class="btn">Add Task</button>
                 </div>
-                <ul id="taskList" class="task-list"></ul>
+                
+                <div class="table-responsive">
+                    <table class="task-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Status</th>
+                                <th>Assignment / Task</th>
+                                <th>Deadline / Schedule</th>
+                                <th style="width: 90px; text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskList">
+                            <!-- Tasks populated dynamically via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -176,37 +273,51 @@
         <section id="contact" class="page-section">
             <div class="fade-in-up">
                 <h1>Get In Touch</h1>
-                <p class="section-desc">Fill out the form below to send me a message.</p>
+                <p class="section-desc">Fill out the form below to send me a message or check my contact info.</p>
             </div>
 
-            <div class="form-container fade-in-up">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your name">
-                        <small class="error-msg" id="nameError"></small>
-                    </div>
+            <div class="contact-layout-wrapper">
+                
+                <div class="form-container fade-in-up contact-form-pane">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                            <small class="error-msg" id="nameError"></small>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="text" id="email" placeholder="name@example.com">
-                        <small class="error-msg" id="emailError"></small>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="text" id="email" placeholder="name@example.com">
+                            <small class="error-msg" id="emailError"></small>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="text" id="phone" placeholder="+234 801 234 5678">
-                        <small class="error-msg" id="phoneError"></small>
-                    </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" id="phone" placeholder="+234 801 234 5678">
+                            <small class="error-msg" id="phoneError"></small>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" placeholder="Your message here..."></textarea>
-                        <small class="error-msg" id="messageError"></small>
-                    </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Your message here..."></textarea>
+                            <small class="error-msg" id="messageError"></small>
+                        </div>
 
-                    <button type="submit" id="submitBtn" class="liquid-glass-btn">Send Message</button>
-                </form>
+                        <button type="submit" id="submitBtn" class="liquid-glass-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="about-card fade-in-up contact-info-pane">
+                    <h3>📍 Contact Information</h3>
+                    <p>Feel free to reach out via email or connect to me on social media channels.</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 15px; line-height: 1.8;">
+                        <li><strong>Email:</strong> <a href="mailto:p.ogunremi0399@miva.edu.ng" class="clickable-link">p.ogunremi0399@miva.edu.ng</a></li>
+                        <li><strong>X:</strong> @precious1234</li>
+                        <li><strong>Location:</strong> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
@@ -217,7 +328,7 @@
        FOOTER
        ========================================== -->
     <footer>
-        <p>&copy; 2026 MIVA Open University Student Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2026 Precious's Student Portfolio | MIVA Open University. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
